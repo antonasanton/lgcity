@@ -1,4 +1,5 @@
 from selenium import webdriver
+
 from selenium.webdriver.common.by import By
 
 class BasePage:
@@ -13,3 +14,4 @@ class BasePage:
 
     def click(self, by: By, value: str):
         self.find_element(by, value).click()
+
