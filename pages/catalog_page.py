@@ -15,19 +15,31 @@ class CatalogPage(BasePage):
     def close_cookie(self):
         self.driver.find_element(By.XPATH,"//button[@class = 'button button--fill button--cookie-close']").click()
 
-
     def open_random_product(self):
         WebDriverWait(self.driver, 10).until(EC.presence_of_all_elements_located((By.XPATH, "//div[@class='catalog__item-title']")))
         time.sleep(5)
         self.close_cookie()
-
         product_cards = self.driver.find_elements(By.XPATH, "//div[@class='catalog__item-title']")
         random_card = random.choice(product_cards)
-        self.close_cookie()
         random_card.click()
 
+        name = self.driver.find_element(By.XPATH,"//a[@class = 'card__info-link']").text
+        type = self.driver.find_element(By.XPATH,"//span[@class = 'card__info-desc']").text
+        time.sleep(3)
+        price = self.driver.find_element(By.XPATH,"//div[@class = 'card__info-price-text card__info-price-text--new']").text
+
         self.click((By.XPATH, "//div[@id='btn-add-to-favorite-text' and contains(@class, 'card__info-favorite-text')]"))
+        time.sleep(2)
         self.click((By.XPATH, "//a[contains(@class, 'header__r-icons-link--favorite')]"))
+
+        name_fav = self.driver.find_element(By.XPATH,"//div[@class = 'catalog__item-title']").text
+        type_fav = self.driver.find_element(By.XPATH,"//div[@class = 'catalog__item-desc']").text
+        time.sleep(3)
+        price_fav = self.driver.find_element(By.XPATH, "//div[@class='catalog__item-price']//div[@class='catalog__item-price-new' and @itemprop='price']").text
+
+        assert name == name_fav
+        assert type == type_fav
+        assert price == price_fav
 
 
 
