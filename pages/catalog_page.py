@@ -14,9 +14,7 @@ class CatalogPage(BasePage):
     def open_catalog(self):
         self.open(self.CATALOG_URL)
 
-    @allure.step("Закрытие уведомления о Куках")
-    def close_cookie(self):
-        self.driver.find_element(By.XPATH,"//button[@class = 'button button--fill button--cookie-close']").click()
+
 
     @allure.step("Открытие рандомной карточки товара")
     def open_random_product(self):
