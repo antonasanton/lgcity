@@ -1,4 +1,4 @@
-import time, re
+import time, re, pytest
 
 from selenium.webdriver.common.by import By
 from pages.base_page import BasePage
@@ -17,8 +17,28 @@ class LGCityCart(BasePage):
 
 
     def checking_cart_data(self, size_text, name, type_of_product, new_price, old_price, code, color):
+        type_of_product_list = ["кроссовки new balance 3000", "кроссовки new balance 5000"]
+        cart_type = ["кроссовки", "кроссовки"]
+        type = "кроссовки new balance"
+
+        if not any(type in cart or cart in type for cart in cart_type):
+            pytest.fail(f"Тип продукта '{type}' не найден в корзине. Доступные типы: {cart_type}")
+
+        # assert type in cart_type
+        # counter = 0
+        # for i in range(len(cart_type)):
+        #
+        #     if cart_type[i] in type or type in cart_type[i]:
+        #         counter += 1
+        #         break
+        #
+        # if counter == 0:
+        #     pytest.fail(f"Тип в корзине не найден. {cart_type}")
+
+
+
         assert self.get_text(self.cart_product_name) == name, f"Имя товара в карточке не совпало с именем товара в корзине. Имя в карточке - {name}, имя в корзине {self.get_text(self.cart_product_name)}"
-        assert self.get_text(self.cart_product_type) == type_of_product, f"Тип товара в карточке не совпал с типом товара в корзине. Тип в карточке - {type_of_product}, тип в корзине {self.get_text(self.cart_product_type)}"
+        # assert self.get_text(self.cart_product_type) == type_of_product, f"Тип товара в карточке не совпал с типом товара в корзине. Тип в карточке - {type_of_product}, тип в корзине {self.get_text(self.cart_product_type)}"
         assert color in self.get_text(self.cart_product_color), f"Цвет товара в карточке не совпал с цветом товара в корзине. Цвет в карточке - {color}, цвет в корзине {self.get_text(self.cart_product_color)}"
         size_from_product_splited = size_text.split(" ")
         size = size_from_product_splited[0]

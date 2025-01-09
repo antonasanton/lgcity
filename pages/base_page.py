@@ -1,9 +1,8 @@
 from selenium import webdriver
 import allure
-import time
 import random
+import time
 from selenium.webdriver import Keys
-from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.by import By
@@ -78,3 +77,17 @@ class BasePage:
     def open_cart(self):
         self.click((By.XPATH, "//header[@class='header']//a[@data-popup='popup--basket']"))
         self.find_element((By.XPATH, "//div[@class='basket__title']"))
+
+    def type_of_product(self):
+        self.find_element((By.XPATH, "//span[@itemprop='description']"))
+
+
+    def close_wheel(self):
+        self.find_element((By.XPATH, "//div[contains(@style, 'flex')]/iframe[@title='Flocktory widget']"))
+        self.driver.switch_to.frame(
+            self.driver.find_element(By.XPATH, "//div[contains(@style, 'flex')]/iframe[@title='Flocktory widget']"))
+        self.find_element((By.XPATH, "//button[@class='close js-close']"))
+        self.driver.find_element(By.XPATH, "//button[@class='close js-close']").click()
+        time.sleep(1)
+        self.driver.find_element(By.XPATH, "//button[@class='close js-close']").click()
+        self.driver.switch_to.default_content()

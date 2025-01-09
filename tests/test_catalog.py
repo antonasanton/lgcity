@@ -3,7 +3,6 @@ import time
 from pages.catalog_page import CatalogPage
 from pages.lgcity_catalog_page import LGCityCatalog
 from pages.lgcity_cart_page import LGCityCart
-from pages.weel_close import WeelClose
 
 
 def test_open_random_product(browser):
@@ -21,9 +20,3 @@ class TestLGCity:
         page.open_cart()
         page = LGCityCart(browser)
         page.checking_cart_data(size_text, name, type_of_product, new_price, old_price, code, color)
-
-    def test_weel_close(self, browser):
-        page = WeelClose(browser)
-        page.open_catalog()
-        page.open_random_product()
-        time.sleep(2)
