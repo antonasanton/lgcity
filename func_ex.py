@@ -26,7 +26,7 @@ from time import process_time
 #
 # game(1, 10, 100)
 
-def house(flat_number, floors, entrances):  # номер квартиры, кол-во этажей и подъездов
+def house(flat_number, floors, entrances):
     flats_in_one_entrance = floors * 4
     total_flats = flats_in_one_entrance * entrances
     if flat_number < 1 or flat_number > total_flats:
@@ -40,5 +40,5 @@ def house(flat_number, floors, entrances):  # номер квартиры, ко�
 
     return entrance_number, floor_number
 
-house(5, 5, 5)
+house(13, 9, 5)
 

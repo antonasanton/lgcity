@@ -14,8 +14,6 @@ class CatalogPage(BasePage):
     def open_catalog(self):
         self.open(self.CATALOG_URL)
 
-
-
     @allure.step("Открытие рандомной карточки товара")
     def open_random_product(self):
         WebDriverWait(self.driver, 10).until(EC.presence_of_all_elements_located((By.XPATH, "//div[@class='catalog__item-title']")))
