@@ -1,12 +1,9 @@
 import time
-from dis import pretty_flags
-
 from pages.catalog_page import CatalogPage
 from pages.lgcity_catalog_page import LGCityCatalog
 from pages.lgcity_cart_page import LGCityCart
 from pages.price_filter import PriceFilter
 from pages.petstore_api import PetStoreAPI
-
 
 def test_open_random_product(browser):
     catalog_page = CatalogPage(browser)
@@ -31,7 +28,6 @@ class TestLGCity:
         page.add_price_filter()
         list_a = page.get_prices(page.prices)
         page.check_prices(list_a)
-
 
 def test_petstore_api():
     pet_store = PetStoreAPI()
