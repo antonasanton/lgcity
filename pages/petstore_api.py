@@ -45,7 +45,7 @@ class PetStoreAPI:
         print("\n")
 
     @allure.step("Проверка, что питомец удалён")
-    def verify_pet_deleted(self, pet_id, pet_name):
+    def verify_pet_deleted(self, pet_id):
         response = requests.get(f"{BASE_URL}/{pet_id}")
         response_data = response.json()
         assert response_data["message"] == "Pet not found", "Сообщение об ошибке некорректно"
