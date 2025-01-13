@@ -1,0 +1,3 @@
+Питомец добавлен: {'id': 1, 'name': 'Vasya', 'photoUrls': [], 'tags': []}
+Питомец найден: {'id': 1, 'name': 'Vasya', 'photoUrls': [], 'tags': []}
+Питомец найден: {'id': 1, 'name': 'Vasya_updated', 'photoUrls': [], 'tags': []}

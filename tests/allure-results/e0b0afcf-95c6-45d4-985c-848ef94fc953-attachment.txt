@@ -1,0 +1,9 @@
+
+
+Питомец добавлен:      {'id': 1, 'name': 'Vasya', 'photoUrls': [], 'tags': []}
+Питомец найден:        {'id': 1, 'name': 'Vasya', 'photoUrls': [], 'tags': []}
+Имя питомца обновлено: {'id': 1, 'name': 'Vasya_updated', 'photoUrls': [], 'tags': []}
+Питомец найден:        {'id': 1, 'name': 'Vasya_updated', 'photoUrls': [], 'tags': []}
+Питомец с ID 1 удалён
+
+

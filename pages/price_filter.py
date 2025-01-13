@@ -45,5 +45,3 @@ class PriceFilter(BasePage):
     def check_prices(self, list_a):
         for i in list_a:
             assert int(i) >= 3000 <= 6000
-
-
