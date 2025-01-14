@@ -1,6 +1,3 @@
-from http.client import responses
-
-import allure_pytest.plugin
 import requests
 import allure
 
