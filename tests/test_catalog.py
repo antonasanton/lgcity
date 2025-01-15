@@ -50,8 +50,10 @@ def test_petstore_api():
     pet_store.delete_pet(new_pet["id"])
 
 
-def test_mvideo(browser):
+def test_citilink(browser):
     m_video = MVideo(browser)
     m_video.open_main_page()
-    m_video.open_catalog()
+    item_name, item_price = m_video.open_catalog_and_add_to_cart()
+    m_video.check_data(item_name, item_price)
+    browser.quit()
 

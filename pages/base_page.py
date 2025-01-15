@@ -1,19 +1,12 @@
-from typing import final
-
 from selenium import webdriver
 import allure
 import random
 import time
 from selenium.webdriver import Keys
-from selenium.webdriver.common.devtools.v85.log import clear
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.action_chains import ActionChains
-
-# class BasePage:
-#     def __init__(self, driver: webdriver.Chrome):
-#         self.driver = driver
 
 class BasePage:
     def __init__(self, driver, timeout=10):
@@ -95,8 +88,16 @@ class BasePage:
         self.driver.back()
 
     @allure.step("Нажатие на ранжомный элемент")
+    # def click_random_element(self, locator):
+    #     random.choice(self.find_elements(locator)).click()
     def click_random_element(self, locator):
-        random.choice(self.find_elements(locator)).click()
+        self.wait.until(EC.visibility_of_all_elements_located(locator))
+        elements = self.find_elements(locator)
+        if not elements:
+            raise ValueError(f"No elements found for locator: {locator}")
+        chosen_element = random.choice(elements)
+        self.wait.until(EC.element_to_be_clickable(locator))
+        chosen_element.click()
 
     def get_random_element(self, locator):
         return random.choice(self.find_elements(locator))
