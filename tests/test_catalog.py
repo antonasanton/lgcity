@@ -2,6 +2,7 @@ import time
 
 from pages.base_page import BasePage
 from pages.catalog_page import CatalogPage
+from pages.citi_filters import CitiFilters
 from pages.lgcity_catalog_page import LGCityCatalog
 from pages.lgcity_cart_page import LGCityCart
 from pages.price_filter import PriceFilter
@@ -57,3 +58,8 @@ def test_citilink(browser):
     m_video.check_data(item_name, item_price)
     browser.quit()
 
+
+def test_citi_filters(browser):
+    citi_filters = CitiFilters(browser)
+    citi_filters.open_main_page()
+    citi_filters.apply_filters_and_check()

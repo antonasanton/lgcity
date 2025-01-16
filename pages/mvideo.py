@@ -1,6 +1,5 @@
 from telnetlib import EC
 from selenium.webdriver.support import expected_conditions as EC
-
 from pages.base_page import BasePage
 from selenium.webdriver.common.by import By
 
@@ -8,8 +7,8 @@ BASE_URL = 'https://www.citilink.ru/'
 
 class MVideo(BasePage):
 
-    CATALOG_BTN = (By.XPATH, "//a[@data-meta-name='DesktopHeaderFixed__catalog-menu']")  #//span[@class='app-catalog-19y4hmw e1fnp08x0' and text()='Каталог товаров']
-    SMARTPHONE_BTN = (By.XPATH, "//a[@class='app-catalog-yhixh0 euu8i7z0' and text()='Смартфоны и планшеты']")
+    CATALOG_BTN = (By.XPATH, "//a[@data-meta-name='DesktopMenu__category--menu-item'")  #//span[@class='app-catalog-19y4hmw e1fnp08x0' and text()='Каталог товаров']
+    SMARTPHONE_BTN = (By.XPATH, "(//a[@data-meta-name='DesktopMenu__category--menu-item' and .//span[text()='Смартфоны и планшеты']])[1]")
     SMARTPHONES_AND_PHONES_BTN = (By.XPATH, "//div[@data-meta-name='CategoryCardsLayout']//span[contains(text(), 'Смартфоны')]")
     LIST_OF_PHONES = (By.XPATH, "//div[@data-meta-name='SnippetProductHorizontalLayout']//a")
     COOKIE_CLOSE_BTN = (By.XPATH, "//span[contains(text(), 'Я согласен')]")
@@ -54,7 +53,6 @@ class MVideo(BasePage):
         self.wait.until(EC.visibility_of_all_elements_located(self.LIST_OF_PHONES))
         self.click_random_element(self.LIST_OF_PHONES)
         self.wait.until(EC.presence_of_element_located(self.ITEM_NAME))
-        # self.wait.until(EC.visibility_of_element_located(self.ITEM_NAME))
         item_name = self.get_name_from_item()
         item_price = self.get_price_from_item()
         self.click(self.ADD_TO_CART_BTN)

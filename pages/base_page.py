@@ -36,8 +36,6 @@ class BasePage:
         element.click()
 
     @allure.step("Получение текста")
-    # def get_text(self, by: By, value: str):
-    #     return self.driver.find_element(by, value).text
     def get_text(self, locator):
         return self.find_element(locator).text
 
